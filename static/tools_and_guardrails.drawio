@@ -1,0 +1,66 @@
+<mxfile host="app.diagrams.net" agent="Antigravity">
+  <diagram name="Policy-Guardrails" id="guardrails_diag">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="560" pageHeight="550" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="grp_guardrails" value="Policy Guardrail &amp;amp; Escalation Flow" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontStyle=1;fontSize=13;startSize=28;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="520" height="500" as="geometry" />
+        </mxCell>
+
+        <mxCell id="start_eval" value="&lt;b&gt;check_refund_eligibility(order_id)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="grp_guardrails">
+          <mxGeometry x="120" y="50" width="280" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d1" value="Is status == 'Refunded'?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontStyle=1;" vertex="1" parent="grp_guardrails">
+          <mxGeometry x="150" y="120" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e_start_d1" edge="1" parent="grp_guardrails" source="start_eval" target="d1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=classic;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_d1_yes" value="YES" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=classic;" edge="1" parent="grp_guardrails" source="d1" target="res_ineligible">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="res_ineligible" value="&lt;b&gt;Ineligible&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Action denied&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="grp_guardrails">
+          <mxGeometry x="410" y="130" width="95" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d2" value="Days since order &amp;gt; 30?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontStyle=1;" vertex="1" parent="grp_guardrails">
+          <mxGeometry x="150" y="210" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e_d1_no" value="NO" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=classic;" edge="1" parent="grp_guardrails" source="d1" target="d2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_d2_yes" value="YES" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=classic;" edge="1" parent="grp_guardrails" source="d2" target="res_esc_days">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="res_esc_days" value="&lt;b&gt;Escalate&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&amp;gt; 30-day window&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="grp_guardrails">
+          <mxGeometry x="410" y="220" width="95" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d3" value="Product price &amp;gt; $500?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontStyle=1;" vertex="1" parent="grp_guardrails">
+          <mxGeometry x="150" y="300" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e_d2_no" value="NO" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=classic;" edge="1" parent="grp_guardrails" source="d2" target="d3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_d3_yes" value="YES" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=classic;" edge="1" parent="grp_guardrails" source="d3" target="res_esc_price">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="res_esc_price" value="&lt;b&gt;Escalate&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&amp;gt; $500 limit&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="grp_guardrails">
+          <mxGeometry x="410" y="310" width="95" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="res_eligible" value="&lt;b&gt;Eligible for Automated Refund&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;Order Operations executes cancel_order or process_refund&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="grp_guardrails">
+          <mxGeometry x="100" y="395" width="320" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="e_d3_no" value="NO" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=classic;" edge="1" parent="grp_guardrails" source="d3" target="res_eligible">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

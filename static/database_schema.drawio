@@ -1,0 +1,91 @@
+<mxfile host="app.diagrams.net" agent="Antigravity">
+  <diagram name="Data-Model-Schema" id="db_schema_diag">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="960" pageHeight="560" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="tbl_customers" value="&lt;b&gt;customers&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;strokeWidth=1.5;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="240" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="c_field_1" value="PK  customer_id : INTEGER" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=10;fontStyle=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="tbl_customers">
+          <mxGeometry y="30" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="c_field_2" value="    first_name  : TEXT NOT NULL" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=10;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="tbl_customers">
+          <mxGeometry y="60" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="c_field_3" value="    email       : TEXT NOT NULL" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=10;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="tbl_customers">
+          <mxGeometry y="90" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="c_field_4" value="    join_date   : DATETIME" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=10;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="tbl_customers">
+          <mxGeometry y="120" width="240" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="tbl_orders" value="&lt;b&gt;orders&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;strokeWidth=1.5;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="360" y="65" width="250" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="o_field_1" value="PK  order_id    : INTEGER" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=10;fontStyle=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="tbl_orders">
+          <mxGeometry y="30" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="o_field_2" value="FK  customer_id : INTEGER" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=10;fontFamily=Courier New;fontSize=11;fontStyle=1;fontColor=#000000;" vertex="1" parent="tbl_orders">
+          <mxGeometry y="60" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="o_field_3" value="FK  product_id  : INTEGER" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=10;fontFamily=Courier New;fontSize=11;fontStyle=1;fontColor=#000000;" vertex="1" parent="tbl_orders">
+          <mxGeometry y="90" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="o_field_4" value="    status      : TEXT NOT NULL" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=10;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="tbl_orders">
+          <mxGeometry y="120" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="o_field_5" value="    order_date  : DATETIME" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=10;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="tbl_orders">
+          <mxGeometry y="150" width="250" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="tbl_products" value="&lt;b&gt;products&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;strokeWidth=1.5;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="680" y="65" width="240" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="p_field_1" value="PK  product_id      : INTEGER" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=10;fontStyle=1;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="tbl_products">
+          <mxGeometry y="30" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p_field_2" value="    name            : TEXT" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=10;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="tbl_products">
+          <mxGeometry y="60" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p_field_3" value="    category        : TEXT" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=10;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="tbl_products">
+          <mxGeometry y="90" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p_field_4" value="    warranty_months : INTEGER" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=10;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="tbl_products">
+          <mxGeometry y="120" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p_field_5" value="    price           : DECIMAL" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=10;fontFamily=Courier New;fontSize=11;fontColor=#000000;" vertex="1" parent="tbl_products">
+          <mxGeometry y="150" width="240" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_cust_ord" edge="1" parent="1" source="c_field_1" target="o_field_2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=classic;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_prod_ord" edge="1" parent="1" source="p_field_1" target="o_field_3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=classic;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="box_ops" value="Order Operations Subagent Tools (SQLAlchemy ORM)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;startSize=26;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="180" y="320" width="600" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="tool_status" value="get_order_status(order_id)&lt;br&gt;Reads current order status" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=11;" vertex="1" parent="box_ops">
+          <mxGeometry x="20" y="40" width="260" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tool_policy" value="check_refund_eligibility(order_id)&lt;br&gt;Guards: 30-day window &amp;amp; $500 threshold" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=11;" vertex="1" parent="box_ops">
+          <mxGeometry x="310" y="40" width="270" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tool_cancel" value="cancel_order(order_id)&lt;br&gt;Sets status to 'Cancelled'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=11;" vertex="1" parent="box_ops">
+          <mxGeometry x="20" y="105" width="260" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tool_refund" value="process_refund(order_id)&lt;br&gt;Sets status to 'Refunded'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=11;" vertex="1" parent="box_ops">
+          <mxGeometry x="310" y="105" width="270" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_tools_orders" edge="1" parent="1" source="box_ops" target="tbl_orders" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.5;strokeDasharray=4 4;endArrow=classic;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
