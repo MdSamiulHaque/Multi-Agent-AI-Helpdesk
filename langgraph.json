@@ -1,0 +1,8 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "agent": "./workflow/orchestrator.py:agent"
+  },
+  "env": ".env"
+}
+

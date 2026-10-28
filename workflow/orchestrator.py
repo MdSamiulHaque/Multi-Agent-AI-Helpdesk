@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 from deepagents import CompiledSubAgent, create_deep_agent
 from langchain.agents import create_agent
 from langgraph.checkpoint.memory import MemorySaver
@@ -9,7 +12,7 @@ class OrchestratorFactory:
     def __init__(self, model_identifier: str = "openai:gpt-5.4-mini"):
         self.model_identifier = model_identifier
 
-    def build_workflow(self):
+    def build_workflow(self, checkpointer=None):
         order_ops_graph = create_agent(
             model=self.model_identifier,
             tools=[get_order_status, cancel_order, process_refund, check_refund_eligibility],
@@ -47,14 +50,17 @@ class OrchestratorFactory:
         )
 
         subagents = [order_ops_subagent, product_specialist_subagent, general_support_subagent]
-        memory = MemorySaver()
+
 
         orchestrator_agent = create_deep_agent(
             model=self.model_identifier,
             tools=[],
             system_prompt="You are a customer support orchestrator. Delegate tasks to the appropriate subagent based on the customer request.",
             subagents=subagents,
-            checkpointer=memory,
+            checkpointer=checkpointer,
         )
 
         return orchestrator_agent
+
+
+agent = OrchestratorFactory().build_workflow()

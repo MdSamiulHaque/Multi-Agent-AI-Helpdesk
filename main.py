@@ -1,4 +1,5 @@
 import uuid
+from langgraph.checkpoint.memory import MemorySaver
 from workflow.orchestrator import OrchestratorFactory
 from dotenv import load_dotenv
 
@@ -15,7 +16,7 @@ class TerminalColors:
 class TerminalApplication:
     def __init__(self, model_identifier: str = "openai:gpt-5.4-mini"):
         self.factory = OrchestratorFactory(model_identifier=model_identifier)
-        self.agent = self.factory.build_workflow()
+        self.agent = self.factory.build_workflow(checkpointer=MemorySaver())
         self.session_id = str(uuid.uuid4())
         self.execution_config = {"configurable": {"thread_id": self.session_id}}
 
