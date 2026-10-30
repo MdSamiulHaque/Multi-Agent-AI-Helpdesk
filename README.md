@@ -30,7 +30,9 @@ An enterprise multi-agent customer support system built with DeepAgents, LangCha
 
 Incoming customer requests enter a root **Customer Support Orchestrator** that classifies intent and delegates execution to a specialized subagent.
 
-![Multi-Agent Helpdesk Architecture](static/SupportAgent.drawio.svg)
+<p align="center">
+  <img src="static/SupportAgent.drawio.svg" alt="Multi-Agent Helpdesk Architecture" />
+</p>
 
 ### Routing Logic
 
@@ -44,7 +46,9 @@ Incoming customer requests enter a root **Customer Support Orchestrator** that c
 
 Technical support answers are strictly grounded in product PDF manuals to prevent hallucinations.
 
-![RAG Pipeline](static/rag_pipeline.drawio.svg)
+<p align="center">
+  <img src="static/rag_pipeline.drawio.svg" alt="RAG Pipeline" />
+</p>
 
 ---
 
@@ -52,7 +56,9 @@ Technical support answers are strictly grounded in product PDF manuals to preven
 
 Below is the deterministic policy evaluation flowchart for automated cancellations and refunds:
 
-![Policy Guardrail Flow](static/tools_and_guardrails.drawio.svg)
+<p align="center">
+  <img src="static/tools_and_guardrails.drawio.svg" alt="Policy Guardrail Flow" />
+</p>
 
 ### Tool Reference
 
@@ -70,7 +76,9 @@ Below is the deterministic policy evaluation flowchart for automated cancellatio
 
 Relational data stored in SQLite (`orders.db`) managed via SQLAlchemy models in `database/models.py`.
 
-![Database Schema](static/database_schema.drawio.svg)
+<p align="center">
+  <img src="static/database_schema.drawio.svg" alt="Database Schema" />
+</p>
 
 ---
 
