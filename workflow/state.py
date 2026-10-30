@@ -3,5 +3,6 @@ from langgraph.graph.message import add_messages
 
 class AgentState(TypedDict):
     messages: Annotated[list, add_messages]
+    authenticated : bool
     next_agent: str
     requires_human: bool

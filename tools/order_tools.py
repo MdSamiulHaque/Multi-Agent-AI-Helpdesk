@@ -14,7 +14,7 @@ def get_order_status(order_id: int) -> str:
     order = repository.get_order_by_id(order_id)
     session.close()
     if order:
-        return order.status
+        return str(order.status)
     return "Order not found"
 
 @tool

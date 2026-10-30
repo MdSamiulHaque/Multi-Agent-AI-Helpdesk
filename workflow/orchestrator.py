@@ -4,6 +4,7 @@ load_dotenv()
 from deepagents import CompiledSubAgent, create_deep_agent
 from langchain.agents import create_agent
 from langgraph.checkpoint.memory import MemorySaver
+from tools.auth_tool import authenticate_user_by_email_and_dob
 from tools.order_tools import get_order_status, cancel_order, process_refund
 from tools.policy_tools import check_refund_eligibility
 from tools.rag_tools import retrieve_manual_info
@@ -54,8 +55,8 @@ class OrchestratorFactory:
 
         orchestrator_agent = create_deep_agent(
             model=self.model_identifier,
-            tools=[],
-            system_prompt="You are a customer support orchestrator. Delegate tasks to the appropriate subagent based on the customer request.",
+            tools=[authenticate_user_by_email_and_dob],
+            system_prompt="You are a customer support orchestrator. Authenticate the user first before handing task to order ops subagent. Delegate tasks to the appropriate subagent based on the customer request.",
             subagents=subagents,
             checkpointer=checkpointer,
         )
