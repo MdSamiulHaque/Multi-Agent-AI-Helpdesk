@@ -1,6 +1,7 @@
 # Multi-Agent Enterprise Customer Helpdesk
 
-An enterprise multi-agent customer support system built with DeepAgents, LangChain, LangGraph, LangSmith, and ChromaDB. It features supervisor orchestration, domain-specialized subagents, RAG over PDF technical manuals, SQL database tools, and policy guardrails with Human-in-the-Loop (HITL) escalation.
+An multi-agent customer support system built with DeepAgents, LangChain, LangGraph, LangSmith, and ChromaDB. It features supervisor orchestration, domain-specialized subagents, RAG over PDF technical manuals, SQL database tools, and policy guardrails with Human-in-the-Loop (HITL) escalation.
+
 
 <p align="center">
   <img src="static/Agent.png" alt="Multi-Agent Helpdesk Architecture" />
